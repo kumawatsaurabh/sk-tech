@@ -1,0 +1,1616 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SK COMPUTECH</title>
+  
+  <!-- Google Fonts: Orbitron & Inter -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@500;700;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Tailwind Configuration for Cyberpunk Neon Palette -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            space: {
+              950: '#05070a',
+              900: '#0a0b10',
+              850: '#0e111a',
+              800: '#141724',
+              700: '#1e2336'
+            },
+            cyan: {
+              glow: '#00f0ff',
+              dim: '#00a3ad'
+            },
+            pink: {
+              glow: '#ff007f',
+              dim: '#b8005b'
+            },
+            purple: {
+              glow: '#9d4edd',
+              deep: '#3c096c'
+            }
+          },
+          fontFamily: {
+            orbitron: ['Orbitron', 'sans-serif'],
+            sans: ['Inter', 'sans-serif'],
+            mono: ['Space Grotesk', 'monospace']
+          },
+          boxShadow: {
+            'neon-cyan': '0 0 20px rgba(0, 240, 255, 0.45)',
+            'neon-pink': '0 0 20px rgba(255, 0, 127, 0.45)',
+            'neon-combo': '0 0 30px rgba(0, 240, 255, 0.3), 0 0 45px rgba(255, 0, 127, 0.25)',
+            'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.57)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Cyberpunk & 3D Typography styles */
+    :root {
+      --neon-cyan: #00f0ff;
+      --neon-pink: #ff007f;
+    }
+
+    body {
+      background-color: #0a0b10;
+      color: #e2e8f0;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* 3D Cyber Text Effect */
+    .cyber-title-3d {
+      font-family: 'Orbitron', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      background: linear-gradient(180deg, #ffffff 0%, #00f0ff 45%, #ff007f 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 10px 30px rgba(0, 240, 255, 0.3), 0 0 60px rgba(255, 0, 127, 0.25);
+      filter: drop-shadow(0 4px 18px rgba(0, 240, 255, 0.5));
+    }
+
+    /* Futuristic Grid Floor */
+    .cyber-grid {
+      background-image: 
+        linear-gradient(rgba(0, 240, 255, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 240, 255, 0.07) 1px, transparent 1px);
+      background-size: 50px 50px;
+      perspective: 600px;
+    }
+
+    .perspective-grid {
+      transform: rotateX(60deg);
+      transform-origin: top center;
+    }
+
+    /* Glassmorphism Classes */
+    .glass-nav {
+      background: rgba(10, 11, 16, 0.72);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(0, 240, 255, 0.18);
+    }
+
+    .glass-card {
+      background: rgba(14, 17, 26, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .glass-card:hover {
+      border-color: rgba(0, 240, 255, 0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 35px -8px rgba(0, 240, 255, 0.25);
+    }
+
+    @keyframes galleryFloat {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-7px) rotate(0.4deg); }
+    }
+
+    .institute-image-card {
+      min-height: 190px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(0, 240, 255, 0.25);
+      border-radius: 1rem;
+      background: #0e111a;
+      box-shadow: 0 0 18px rgba(0, 240, 255, 0.08);
+      animation: galleryFloat 6s ease-in-out infinite;
+      transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+    }
+    .institute-image-card:nth-child(2n) { animation-delay: -1.3s; }
+    .institute-image-card:nth-child(3n) { animation-delay: -2.6s; }
+    .institute-image-card:hover {
+      z-index: 2;
+      transform: translateY(-10px) scale(1.025) !important;
+      border-color: var(--neon-pink);
+      box-shadow: 0 0 28px rgba(255, 0, 127, 0.28);
+    }
+    .institute-image-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(110deg, transparent 35%, rgba(255, 255, 255, 0.16) 50%, transparent 65%);
+      transform: translateX(-120%);
+      transition: transform 0.8s ease;
+      pointer-events: none;
+    }
+    .institute-image-card:hover::after { transform: translateX(120%); }
+    .institute-image-card img {
+      width: 100%;
+      height: 100%;
+      min-height: 190px;
+      object-fit: cover;
+      opacity: 0.78;
+      filter: saturate(0.8) contrast(1.1);
+      transition: transform 0.6s ease, opacity 0.6s ease, filter 0.6s ease;
+    }
+    .institute-image-card:hover img { transform: scale(1.12); opacity: 1; filter: saturate(1.25) contrast(1.05); }
+    .institute-image-card figcaption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 2.5rem 1rem 0.9rem;
+      background: linear-gradient(transparent, rgba(5, 7, 10, 0.95));
+      color: white;
+      font-family: 'Space Grotesk', monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .institute-image-card figcaption span { color: var(--neon-cyan); margin-right: 0.45rem; }
+    @media (prefers-reduced-motion: reduce) { .institute-image-card { animation: none; } }
+
+    /* Rotating Dual Orbit Animations */
+    @keyframes orbitClockwise {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes orbitCounter {
+      from { transform: rotate(360deg); }
+      to { transform: rotate(0deg); }
+    }
+
+    .animate-orbit-outer {
+      animation: orbitClockwise 28s linear infinite;
+    }
+
+    .animate-orbit-inner {
+      animation: orbitCounter 20s linear infinite;
+    }
+
+    /* Counter rotate so icons remain horizontal and readable */
+    .counter-rotate-outer {
+      animation: orbitCounter 28s linear infinite;
+    }
+
+    .counter-rotate-inner {
+      animation: orbitClockwise 20s linear infinite;
+    }
+
+    /* Pause orbit on hover */
+    .orbit-container:hover .animate-orbit-outer,
+    .orbit-container:hover .animate-orbit-inner,
+    .orbit-container:hover .counter-rotate-outer,
+    .orbit-container:hover .counter-rotate-inner {
+      animation-play-state: paused;
+    }
+
+    /* Glowing borders */
+    .border-glow-cyan {
+      border: 1px solid rgba(0, 240, 255, 0.5);
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+    }
+
+    .border-glow-pink {
+      border: 1px solid rgba(255, 0, 127, 0.5);
+      box-shadow: 0 0 15px rgba(255, 0, 127, 0.3);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0a0b10;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e2336;
+      border-radius: 4px;
+      border: 1px solid rgba(0, 240, 255, 0.2);
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #00f0ff;
+    }
+  </style>
+</head>
+<body class="bg-space-900 text-slate-100 min-h-screen relative selection:bg-cyan-glow selection:text-black">
+
+  <!-- Ambient Space Dust Canvas Background -->
+  <canvas id="ambient-canvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
+
+  <!-- Glowing Ambient Radial Gradients -->
+  <div class="fixed top-[-10vw] left-[-10vw] w-[45vw] h-[45vw] bg-cyan-glow/10 rounded-full blur-[140px] pointer-events-none z-0"></div>
+  <div class="fixed bottom-[-10vw] right-[-10vw] w-[50vw] h-[50vw] bg-pink-glow/10 rounded-full blur-[160px] pointer-events-none z-0"></div>
+  <div class="fixed top-[45%] left-[30%] w-[35vw] h-[35vw] bg-purple-glow/10 rounded-full blur-[180px] pointer-events-none z-0"></div>
+
+  <!-- Transparent Fixed Glassmorphic Navigation -->
+  <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 glass-nav" id="main-header">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#home" class="flex items-center gap-3 group">
+        <div class="relative w-11 h-11 rounded-xl bg-gradient-to-tr from-cyan-glow to-pink-glow p-[1.5px] transition-transform group-hover:scale-105 duration-300">
+          <div class="w-full h-full bg-space-900 rounded-[10px] flex items-center justify-center">
+            <i class="fa-solid fa-microchip text-cyan-glow text-xl drop-shadow-[0_0_8px_#00f0ff]"></i>
+          </div>
+        </div>
+        <div>
+          <span class="font-orbitron font-extrabold text-lg sm:text-xl tracking-wider text-white">SK <span class="text-cyan-glow drop-shadow-[0_0_10px_rgba(0,240,255,0.8)]">COMPUTECH</span></span>
+          <span class="block text-[10px] tracking-widest text-pink-glow uppercase font-mono font-medium -mt-1">Govt. Certified IT Institute</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-300">
+        <a href="#home" class="hover:text-cyan-glow transition-colors duration-200">Home</a>
+        
+        <!-- Courses Dropdown -->
+        <div class="relative group py-2">
+          <a href="#courses" class="flex items-center gap-1.5 hover:text-cyan-glow transition-colors duration-200">
+            Courses <i class="fa-solid fa-chevron-down text-[10px] transition-transform duration-200 group-hover:rotate-180"></i>
+          </a>
+          <!-- Dropdown Menu -->
+          <div class="absolute left-0 mt-2 w-56 p-2 rounded-xl glass-card border border-cyan-glow/20 shadow-2xl opacity-0 translate-y-3 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300">
+            <a href="#featured-showcase" onclick="switchFeaturedCourse('rscit')" class="block px-3 py-2 text-xs rounded-lg hover:bg-cyan-glow/10 hover:text-cyan-glow transition-all">
+              <i class="fa-solid fa-certificate text-cyan-glow mr-2"></i> RSCIT (Govt. Approved)
+            </a>
+            <a href="#featured-showcase" onclick="switchFeaturedCourse('tally')" class="block px-3 py-2 text-xs rounded-lg hover:bg-pink-glow/10 hover:text-pink-glow transition-all">
+              <i class="fa-solid fa-calculator text-pink-glow mr-2"></i> Tally Prime + GST
+            </a>
+            <a href="#featured-showcase" onclick="switchFeaturedCourse('dca')" class="block px-3 py-2 text-xs rounded-lg hover:bg-cyan-glow/10 hover:text-cyan-glow transition-all">
+              <i class="fa-solid fa-laptop-code text-cyan-glow mr-2"></i> DCA / PGDCA Diploma
+            </a>
+            <a href="#courses" class="block px-3 py-2 text-xs rounded-lg hover:bg-white/5 hover:text-slate-100 transition-all border-t border-white/5 mt-1">
+              <i class="fa-solid fa-keyboard text-slate-400 mr-2"></i> Typing & Skill Programs
+            </a>
+          </div>
+        </div>
+
+        <a href="#institute-gallery" class="hover:text-cyan-glow transition-colors duration-200">Campus Tour</a>
+        <a href="#why-us" class="hover:text-cyan-glow transition-colors duration-200">Why Us</a>
+        <a href="#student-zone" class="hover:text-cyan-glow transition-colors duration-200">Student Zone</a>
+        <a href="#contact" class="hover:text-cyan-glow transition-colors duration-200">Contact</a>
+      </nav>
+
+      <!-- Desktop Action CTA Buttons -->
+      <div class="hidden md:flex items-center gap-4">
+        <button onclick="openEnrollmentModal()" class="relative group overflow-hidden px-5 py-2.5 rounded-full font-orbitron text-xs tracking-wider font-semibold text-black transition-all duration-300">
+          <span class="absolute inset-0 bg-gradient-to-r from-cyan-glow via-cyan-400 to-pink-glow"></span>
+          <span class="absolute inset-0 bg-gradient-to-r from-pink-glow to-cyan-glow opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
+          <span class="relative z-10 flex items-center gap-2">
+            ENROLL NOW <i class="fa-solid fa-arrow-right-long text-xs group-hover:translate-x-1 transition-transform"></i>
+          </span>
+        </button>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button id="mobile-menu-btn" class="md:hidden text-cyan-glow text-2xl p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-glow/50" aria-label="Toggle Navigation">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-menu" class="hidden md:hidden px-6 pt-3 pb-6 glass-card border-b border-cyan-glow/20 space-y-3">
+      <a href="#home" class="block py-2 text-slate-200 hover:text-cyan-glow mobile-nav-link">Home</a>
+      <a href="#featured-showcase" class="block py-2 text-slate-200 hover:text-cyan-glow mobile-nav-link">Featured Programs</a>
+      <a href="#courses" class="block py-2 text-slate-200 hover:text-cyan-glow mobile-nav-link">All Courses</a>
+      <a href="#institute-gallery" class="block py-2 text-slate-200 hover:text-cyan-glow mobile-nav-link">Campus Tour</a>
+      <a href="#why-us" class="block py-2 text-slate-200 hover:text-cyan-glow mobile-nav-link">Why SK Computech</a>
+      <a href="#student-zone" class="block py-2 text-slate-200 hover:text-cyan-glow mobile-nav-link">Student Zone & Verification</a>
+      <a href="#contact" class="block py-2 text-slate-200 hover:text-cyan-glow mobile-nav-link">Contact</a>
+      <div class="pt-2">
+        <button onclick="openEnrollmentModal(); toggleMobileMenu();" class="w-full text-center py-3 rounded-xl bg-gradient-to-r from-cyan-glow to-pink-glow text-black font-orbitron font-bold text-xs uppercase tracking-wider shadow-neon-combo">
+          Enroll Now Online
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="relative min-h-screen flex items-center justify-center pt-28 pb-16 overflow-hidden">
+    
+    <!-- 3D Grid Floor Horizon Background -->
+    <div class="absolute bottom-0 left-0 right-0 h-96 cyber-grid perspective-grid opacity-35 pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+      
+      <!-- Top Cyber Tag -->
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-space-800/80 border border-cyan-glow/40 shadow-neon-cyan mb-8 animate-pulse">
+        <span class="w-2 h-2 rounded-full bg-cyan-glow inline-block"></span>
+        <span class="text-xs sm:text-sm font-mono tracking-widest text-cyan-glow uppercase font-bold">PREMIER COMPUTER EDUCATION &amp; IT TRAINING</span>
+      </div>
+
+      <!-- 3D Massive Heading -->
+      <h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black mb-6 cyber-title-3d leading-tight">
+        SK COMPUTECH
+      </h1>
+
+      <!-- Neon Sub-Tagline -->
+      <div class="flex items-center justify-center gap-3 sm:gap-6 mb-8 text-sm sm:text-lg md:text-xl font-orbitron font-bold text-slate-200 tracking-widest flex-wrap">
+        <span class="text-cyan-glow drop-shadow-[0_0_10px_#00f0ff] flex items-center gap-2"><i class="fa-solid fa-code"></i> LEARN</span>
+        <span class="text-slate-600">|</span>
+        <span class="text-pink-glow drop-shadow-[0_0_10px_#ff007f] flex items-center gap-2"><i class="fa-solid fa-bolt"></i> UPSKILL</span>
+        <span class="text-slate-600">|</span>
+        <span class="text-purple-glow drop-shadow-[0_0_10px_#9d4edd] flex items-center gap-2"><i class="fa-solid fa-award"></i> GET CERTIFIED</span>
+      </div>
+
+      <!-- Institute Description -->
+      <p class="max-w-3xl mx-auto text-base sm:text-lg text-slate-300/90 leading-relaxed font-normal mb-10">
+        Empowering students, professionals, and job-aspirants with industry-recognized computer skills.
+        From government-certified courses like <span class="text-cyan-glow font-semibold">RSCIT</span> to professional accounting with <span class="text-pink-glow font-semibold">Tally Prime GST</span>, programming, and advanced diploma IT programs.
+      </p>
+
+      <!-- CTA Buttons Section -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+        <a href="#featured-showcase" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-cyan-glow to-blue-500 text-black font-orbitron font-bold text-sm tracking-wider hover:shadow-neon-cyan transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-3">
+          EXPLORE COURSES <i class="fa-solid fa-arrow-down"></i>
+        </a>
+        <button onclick="openEnrollmentModal()" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-space-800/80 border border-pink-glow/60 text-pink-glow font-orbitron font-bold text-sm tracking-wider hover:bg-pink-glow hover:text-black hover:shadow-neon-pink transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-3">
+          ENROLL ONLINE <i class="fa-solid fa-paper-plane"></i>
+        </button>
+      </div>
+
+      <!-- Quick Metrics Counters -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mt-16 pt-8 border-t border-slate-800/80">
+        <div class="p-3">
+          <p class="font-orbitron text-2xl sm:text-3xl font-black text-cyan-glow">10,000+</p>
+          <p class="text-xs text-slate-400 font-mono mt-1">Students Trained</p>
+        </div>
+        <div class="p-3">
+          <p class="font-orbitron text-2xl sm:text-3xl font-black text-pink-glow">100%</p>
+          <p class="text-xs text-slate-400 font-mono mt-1">Hands-On Practical Lab</p>
+        </div>
+        <div class="p-3">
+          <p class="font-orbitron text-2xl sm:text-3xl font-black text-cyan-glow">Govt.</p>
+          <p class="text-xs text-slate-400 font-mono mt-1">Approved Examination</p>
+        </div>
+        <div class="p-3">
+          <p class="font-orbitron text-2xl sm:text-3xl font-black text-pink-glow">15+ Yrs</p>
+          <p class="text-xs text-slate-400 font-mono mt-1">Academic Excellence</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section 2: Interactive Featured Showcase (Referencing Spec Document) -->
+  <section id="featured-showcase" class="py-24 relative overflow-hidden bg-space-950/60 border-y border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Interactive Course Switcher Pills -->
+      <div class="flex flex-wrap items-center justify-center gap-3 mb-16">
+        <button onclick="switchFeaturedCourse('rscit')" id="btn-tab-rscit" class="course-tab-btn active px-5 py-2.5 rounded-full font-orbitron text-xs font-bold transition-all border border-cyan-glow bg-cyan-glow/20 text-cyan-glow shadow-neon-cyan">
+          01. RSCIT (GOVT. APPROVED)
+        </button>
+        <button onclick="switchFeaturedCourse('tally')" id="btn-tab-tally" class="course-tab-btn px-5 py-2.5 rounded-full font-orbitron text-xs font-bold transition-all border border-slate-700 bg-space-800 text-slate-400 hover:border-pink-glow/60 hover:text-pink-glow">
+          02. TALLY PRIME + GST
+        </button>
+        <button onclick="switchFeaturedCourse('dca')" id="btn-tab-dca" class="course-tab-btn px-5 py-2.5 rounded-full font-orbitron text-xs font-bold transition-all border border-slate-700 bg-space-800 text-slate-400 hover:border-purple-glow/60 hover:text-purple-glow">
+          03. DCA / PROGRAMMING
+        </button>
+      </div>
+
+      <!-- Split Layout Showcase -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Side: Course Content -->
+        <div class="lg:col-span-6 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-cyan-glow/10 border border-cyan-glow/30 text-cyan-glow text-xs font-mono font-bold" id="featured-tag">
+            <i class="fa-solid fa-award"></i> RAJASTHAN GOVT. APPROVED IT LITERACY
+          </div>
+          
+          <h2 class="text-3xl sm:text-5xl font-orbitron font-extrabold text-white leading-tight" id="featured-title">
+            RSCIT DIPLOMA <br><span class="text-cyan-glow drop-shadow-[0_0_15px_rgba(0,240,255,0.7)]">CERTIFICATION</span>
+          </h2>
+          
+          <p class="text-slate-300 text-base sm:text-lg leading-relaxed" id="featured-desc">
+            Essential 3-month IT qualification recognized across Rajasthan government exams and professional corporate environments. Covers full MS Office, Internet operations, Cyber Security basics, and e-Mitra digital governance portals.
+          </p>
+
+          <!-- Highlights Pills -->
+          <div class="grid grid-cols-2 gap-3 pt-2" id="featured-highlights">
+            <div class="p-3 rounded-xl bg-space-800/80 border border-slate-700/60 flex items-center gap-3">
+              <i class="fa-solid fa-clock text-cyan-glow text-lg"></i>
+              <div>
+                <p class="text-[11px] text-slate-400 font-mono">DURATION</p>
+                <p class="text-sm font-semibold text-slate-200">3 Months (Daily Lab)</p>
+              </div>
+            </div>
+            <div class="p-3 rounded-xl bg-space-800/80 border border-slate-700/60 flex items-center gap-3">
+              <i class="fa-solid fa-user-graduate text-pink-glow text-lg"></i>
+              <div>
+                <p class="text-[11px] text-slate-400 font-mono">ELIGIBILITY</p>
+                <p class="text-sm font-semibold text-slate-200">10th Standard Pass</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Feature Action Buttons -->
+          <div class="pt-4 flex flex-wrap items-center gap-4">
+            <button onclick="downloadSyllabusModal()" class="px-6 py-3.5 rounded-xl bg-space-800 hover:bg-space-700 text-slate-200 border border-slate-600 font-orbitron text-xs tracking-wider font-semibold transition-all flex items-center gap-2">
+              <i class="fa-solid fa-file-arrow-down text-cyan-glow"></i> SYLLABUS OUTLINE
+            </button>
+            <button onclick="openEnrollmentWithCourse()" id="featured-enroll-btn" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-glow to-blue-600 text-black font-orbitron text-xs tracking-wider font-bold shadow-neon-cyan hover:scale-105 transition-all flex items-center gap-2">
+              ENROLL FOR THIS COURSE <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Right Side: Rotating Dual Orbit Animation Showcase -->
+        <div class="lg:col-span-6 flex items-center justify-center">
+          <div class="relative w-[340px] h-[340px] sm:w-[460px] sm:h-[460px] orbit-container flex items-center justify-center">
+            
+            <!-- Central Glowing Holographic Core -->
+            <div class="relative z-20 w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-space-950 border-2 border-cyan-glow shadow-neon-cyan flex flex-col items-center justify-center p-2 text-center group cursor-pointer">
+              <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-cyan-glow/20 flex items-center justify-center mb-1 group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-atom text-cyan-glow text-xl sm:text-2xl animate-spin" style="animation-duration: 12s;"></i>
+              </div>
+              <span class="text-[9px] sm:text-[11px] font-orbitron font-bold text-white tracking-wider" id="orbit-center-label">SK TECH HUB</span>
+            </div>
+
+            <!-- Outer Orbital Ring -->
+            <div class="absolute inset-0 rounded-full border border-dashed border-cyan-glow/30 animate-orbit-outer">
+              <!-- Node 1 (Top) -->
+              <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                <div class="counter-rotate-outer w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-space-850 border border-cyan-glow/70 shadow-neon-cyan flex items-center justify-center text-cyan-glow" id="outer-node-1">
+                  <i class="fa-solid fa-file-word text-lg sm:text-xl"></i>
+                </div>
+              </div>
+              <!-- Node 2 (Right) -->
+              <div class="absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2">
+                <div class="counter-rotate-outer w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-space-850 border border-cyan-glow/70 shadow-neon-cyan flex items-center justify-center text-cyan-glow" id="outer-node-2">
+                  <i class="fa-solid fa-file-excel text-lg sm:text-xl"></i>
+                </div>
+              </div>
+              <!-- Node 3 (Bottom) -->
+              <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2">
+                <div class="counter-rotate-outer w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-space-850 border border-cyan-glow/70 shadow-neon-cyan flex items-center justify-center text-cyan-glow" id="outer-node-3">
+                  <i class="fa-solid fa-shield-halved text-lg sm:text-xl"></i>
+                </div>
+              </div>
+              <!-- Node 4 (Left) -->
+              <div class="absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2">
+                <div class="counter-rotate-outer w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-space-850 border border-cyan-glow/70 shadow-neon-cyan flex items-center justify-center text-cyan-glow" id="outer-node-4">
+                  <i class="fa-solid fa-network-wired text-lg sm:text-xl"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- Inner Orbital Ring -->
+            <div class="absolute w-[220px] h-[220px] sm:w-[300px] sm:h-[300px] rounded-full border border-pink-glow/40 animate-orbit-inner">
+              <!-- Node A (Top-Right) -->
+              <div class="absolute top-4 right-8">
+                <div class="counter-rotate-inner w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-space-800 border border-pink-glow shadow-neon-pink flex items-center justify-center text-pink-glow" id="inner-node-1">
+                  <i class="fa-solid fa-file-powerpoint text-base sm:text-lg"></i>
+                </div>
+              </div>
+              <!-- Node B (Bottom-Left) -->
+              <div class="absolute bottom-4 left-8">
+                <div class="counter-rotate-inner w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-space-800 border border-pink-glow shadow-neon-pink flex items-center justify-center text-pink-glow" id="inner-node-2">
+                  <i class="fa-solid fa-cloud text-base sm:text-lg"></i>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section 3: All Courses Grid & Syllabus Catalog -->
+  <section id="courses" class="py-24 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-mono font-bold tracking-widest text-cyan-glow uppercase bg-cyan-glow/10 px-3 py-1 rounded-full border border-cyan-glow/30">
+          COMPREHENSIVE ACADEMIC CURRICULUM
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-orbitron font-extrabold text-white mt-4">
+          All Accredited <span class="text-pink-glow">Courses</span>
+        </h2>
+        <p class="text-slate-400 text-sm sm:text-base mt-4">
+          Industry-aligned programs with updated syllabus, real-time lab practice, practical projects, and exam preparation.
+        </p>
+      </div>
+
+      <!-- Course Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Course 1: RSCIT -->
+        <div class="glass-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden group">
+          <div class="absolute top-0 right-0 w-28 h-28 bg-cyan-glow/5 rounded-full blur-2xl group-hover:bg-cyan-glow/15 transition-all"></div>
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-cyan-glow/15 text-cyan-glow font-bold border border-cyan-glow/30">
+                GOVT. RECOGNIZED
+              </span>
+              <span class="text-xs text-slate-400 font-mono"><i class="fa-solid fa-hourglass-half mr-1"></i> 3 Months</span>
+            </div>
+            
+            <h3 class="text-xl font-orbitron font-bold text-white mb-2 group-hover:text-cyan-glow transition-colors">
+              RSCIT (IT Literacy)
+            </h3>
+            <p class="text-slate-300 text-xs sm:text-sm mb-4 leading-relaxed">
+              Rajasthan State Certificate in Information Technology. Mandatory for government examinations and foundational computer mastery.
+            </p>
+
+            <h4 class="text-xs font-mono text-slate-400 uppercase tracking-wider mb-2">Key Modules:</h4>
+            <ul class="text-xs text-slate-300 space-y-2 mb-6">
+              <li class="flex items-start gap-2"><i class="fa-solid fa-check text-cyan-glow text-[11px] mt-0.5"></i> Computer Hardware &amp; Windows Operating System</li>
+              <li class="flex items-start gap-2"><i class="fa-solid fa-check text-cyan-glow text-[11px] mt-0.5"></i> MS Word, Excel, PowerPoint &amp; Outlook</li>
+              <li class="flex items-start gap-2"><i class="fa-solid fa-check text-cyan-glow text-[11px] mt-0.5"></i> Cyber Security, Digital Payments &amp; Net Banking</li>
+              <li class="flex items-start gap-2"><i class="fa-solid fa-check text-cyan-glow text-[11px] mt-0.5"></i> Rajasthan e-Gov Portals (SSO, Jan Aadhaar)</li>
+            </ul>
+          </div>
+
+          <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+            <span class="text-xs text-slate-400 font-mono">Eligibility: 10th Pass</span>
+            <button onclick="openEnrollmentModalWith('RSCIT')" class="text-xs font-orbitron font-bold text-cyan-glow hover:underline flex items-center gap-1.5">
+              Enroll <i class="fa-solid fa-chevron-right text-[10px]"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Course 2: Tally Prime + GST -->
+        <div class="glass-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden group">
+          <div class="absolute top-0 right-0 w-28 h-28 bg-pink-glow/5 rounded-full blur-2xl group-hover:bg-pink-glow/15 transition-all"></div>
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-pink-glow/15 text-pink-glow font-bold border border-pink-glow/30">
+                FINANCIAL ACCOUNTING
+              </span>
+              <span class="text-xs text-slate-400 font-mono"><i class="fa-solid fa-hourglass-half mr-1"></i> 2 - 3 Months</span>
+            </div>
+            
+            <h3 class="text-xl font-orbitron font-bold text-white mb-2 group-hover:text-pink-glow transition-colors">
+              Tally Prime with GST
+            </h3>
+            <p class="text-slate-300 text-xs sm:text-sm mb-4 leading-relaxed">
+              Complete professional computerized accounting, billing, inventory, and automated taxation course for accounts and business careers.
+            </p>
+
+            <h4 class="text-xs font-mono text-slate-400 uppercase tracking-wider mb-2">Key Modules:</h4>
+            <ul class="text-xs text-slate-300 space-y-2 mb-6">
+              <li class="flex items-start gap-2"><i class="fa-solid fa-check text-pink-glow text-[11px] mt-0.5"></i> Accounting Principles &amp; Voucher Entries</li>
+              <li class="flex items-start gap-2"><i class="fa-solid fa-check text-pink-glow text-[11px] mt-0.5"></i> Inventory &amp; Stock Management with Batch Tracking</li>
+              <li class="flex items-start gap-2"><i class="fa-solid fa-check text-pink-glow text-[11px] mt-0.5"></i> GST Setup, CGST/SGST/IGST &amp; e-Invoicing</li>
+              <li class="flex items-start gap-2"><i class="fa-solid fa-check text-pink-glow text-[11px] mt-0.5"></i> GSTR-1, GSTR-3B, TDS/TCS &amp; Balance Sheets</li>
+            </ul>
+          </div>
+
+          <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+            <span class="text-xs text-slate-400 font-mono">10th / 12th / Commerce</span>
+            <button onclick="openEnrollmentModalWith('Tally Prime with GST')" class="text-xs font-orbitron font-bold text-pink-glow hover:underline flex items-center gap-1.5">
+              Enroll <i class="fa-solid fa-chevron-right text-[10px]"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Course 3: DCA -->
+        <div class="glass-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden group">
+          <div class="absolute top-0 right-0 w-28 h-28 bg-purple-glow/5 rounded-full blur-2xl group-hover:bg-purple-glow/15 transition-all"></div>
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-purple-glow/15 text-purple-glow font-bold border border-purple-glow/30">
+                6-MONTH DIPLOMA
+              </span>
+              <span class="text-xs text-slate-400 font-mono"><i class="fa-solid fa-hourglass-half mr-1"></i> 6 Months</span>
+            </div>
+            
+            <h3 class="text-xl font-orbitron font-bold text-white mb-2 group-hover:text-purple-glow transition-colors">
+              DCA (Diploma in Computer Apps)
+            </h3>
+            <p class="text-slate-300 text-xs sm:text-sm mb-4 leading-relaxed">
+              Comprehensive diploma covering office automation, graphic designing basics, and core computer operating system concepts.
+            </p>
+
+            <h4 class="text-xs font-mono text-slate-400 uppercase tracking-wider mb-2">Key Modules:</h4>
+            <ul class="text-xs text-slate-300 space-y-2 mb-6">
+              <li class="flex items-start gap-2"><i class="fa-solid fa-check text-purple-glow text-[11px] mt-0.5"></i> Computer Overview &amp; Windows Operating System</li>
+              <li class="flex items-start gap-2"><i class="fa-solid fa-check text-purple-glow text-[11px] mt-0.5"></i> Advanced Excel Formulas, Macros &amp; Dashboards</li>
+              <li class="flex items-start gap-2"><i class="fa-solid fa-check text-purple-glow text-[11px] mt-0.5"></i> Desktop Publishing (Photoshop &amp; CorelDRAW Basics)</li>
+              <li class="flex items-start gap-2"><i class="fa-solid fa-check text-purple-glow text-[11px] mt-0.5"></i> PC Assembly &amp; Troubleshooting Fundamentals</li>
+            </ul>
+          </div>
+
+          <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+            <span class="text-xs text-slate-400 font-mono">Eligibility: 10th / 12th</span>
+            <button onclick="openEnrollmentModalWith('DCA')" class="text-xs font-orbitron font-bold text-purple-glow hover:underline flex items-center gap-1.5">
+              Enroll <i class="fa-solid fa-chevron-right text-[10px]"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Course 4: PGDCA -->
+        <div class="glass-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden group">
+          <div class="absolute top-0 right-0 w-28 h-28 bg-cyan-glow/5 rounded-full blur-2xl group-hover:bg-cyan-glow/15 transition-all"></div>
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-cyan-glow/15 text-cyan-glow font-bold border border-cyan-glow/30">
+                POST GRADUATE
+              </span>
+              <span class="text-xs text-slate-400 font-mono"><i class="fa-solid fa-hourglass-half mr-1"></i> 1 Year</span>
+            </div>
+            
+            <h3 class="text-xl font-orbitron font-bold text-white mb-2 group-hover:text-cyan-glow transition-colors">
+              PGDCA
+            </h3>
+            <p class="text-slate-300 text-xs sm:text-sm mb-4 leading-relaxed">
+              Post-graduate professional diploma focusing on software engineering, database design, and object-oriented programming.
+            </p>
+
+            <h4 class="text-xs font-mono text-slate-400 uppercase tracking-wider mb-2">Key Modules:</h4>
+            <ul class="text-xs text-slate-300 space-y-2 mb-6">
+              <li class="flex items-start gap-2"><i class="fa-solid fa-check text-cyan-glow text-[11px] mt-0.5"></i> Object Oriented Programming (C++ / Python)</li>
+              <li class="flex items-start gap-2"><i class="fa-solid fa-check text-cyan-glow text-[11px] mt-0.5"></i> Database Management Systems (SQL / MySQL)</li>
+              <li class="flex items-start gap-2"><i class="fa-solid fa-check text-cyan-glow text-[11px] mt-0.5"></i> Web Technologies (HTML5, Modern CSS, JS)</li>
+              <li class="flex items-start gap-2"><i class="fa-solid fa-check text-cyan-glow text-[11px] mt-0.5"></i> Software Engineering &amp; Capstone Real Project</li>
+            </ul>
+          </div>
+
+          <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+            <span class="text-xs text-slate-400 font-mono">Eligibility: Graduation</span>
+            <button onclick="openEnrollmentModalWith('PGDCA')" class="text-xs font-orbitron font-bold text-cyan-glow hover:underline flex items-center gap-1.5">
+              Enroll <i class="fa-solid fa-chevron-right text-[10px]"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Course 5: Typing & Short Term Skill Courses -->
+        <div class="glass-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden group">
+          <div class="absolute top-0 right-0 w-28 h-28 bg-pink-glow/5 rounded-full blur-2xl group-hover:bg-pink-glow/15 transition-all"></div>
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-pink-glow/15 text-pink-glow font-bold border border-pink-glow/30">
+                GOVT. EXAM SPEED TEST
+              </span>
+              <span class="text-xs text-slate-400 font-mono"><i class="fa-solid fa-hourglass-half mr-1"></i> Flexible</span>
+            </div>
+            
+            <h3 class="text-xl font-orbitron font-bold text-white mb-2 group-hover:text-pink-glow transition-colors">
+              Computer Typing &amp; Skills
+            </h3>
+            <p class="text-slate-300 text-xs sm:text-sm mb-4 leading-relaxed">
+              Targeted speed building in Hindi (Kruti Dev / Mangal Inscript) and English for High Court, LDC, Railway, and SSC typing tests.
+            </p>
+
+            <h4 class="text-xs font-mono text-slate-400 uppercase tracking-wider mb-2">Key Modules:</h4>
+            <ul class="text-xs text-slate-300 space-y-2 mb-6">
+              <li class="flex items-start gap-2"><i class="fa-solid fa-check text-pink-glow text-[11px] mt-0.5"></i> Hindi Typing (Devnagari / Mangal / KrutiDev 010)</li>
+              <li class="flex items-start gap-2"><i class="fa-solid fa-check text-pink-glow text-[11px] mt-0.5"></i> English Typing Speed (Accuracy + 40-50+ WPM)</li>
+              <li class="flex items-start gap-2"><i class="fa-solid fa-check text-pink-glow text-[11px] mt-0.5"></i> Live Exam Simulation Software Drills</li>
+              <li class="flex items-start gap-2"><i class="fa-solid fa-check text-pink-glow text-[11px] mt-0.5"></i> Spoken English &amp; Corporate Communication</li>
+            </ul>
+          </div>
+
+          <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+            <span class="text-xs text-slate-400 font-mono">Open to All Students</span>
+            <button onclick="openEnrollmentModalWith('Typing')" class="text-xs font-orbitron font-bold text-pink-glow hover:underline flex items-center gap-1.5">
+              Enroll <i class="fa-solid fa-chevron-right text-[10px]"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Course 6: Custom Python & Coding Specialization -->
+        <div class="glass-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden group">
+          <div class="absolute top-0 right-0 w-28 h-28 bg-cyan-glow/5 rounded-full blur-2xl group-hover:bg-cyan-glow/15 transition-all"></div>
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-cyan-glow/15 text-cyan-glow font-bold border border-cyan-glow/30">
+                MODERN TECH
+              </span>
+              <span class="text-xs text-slate-400 font-mono"><i class="fa-solid fa-hourglass-half mr-1"></i> 3 - 4 Months</span>
+            </div>
+            
+            <h3 class="text-xl font-orbitron font-bold text-white mb-2 group-hover:text-cyan-glow transition-colors">
+              Python &amp; Web Development
+            </h3>
+            <p class="text-slate-300 text-xs sm:text-sm mb-4 leading-relaxed">
+              Hands-on coding bootcamp covering Python fundamentals, logic building, data handling, and modern frontend web creation.
+            </p>
+
+            <h4 class="text-xs font-mono text-slate-400 uppercase tracking-wider mb-2">Key Modules:</h4>
+            <ul class="text-xs text-slate-300 space-y-2 mb-6">
+              <li class="flex items-start gap-2"><i class="fa-solid fa-check text-cyan-glow text-[11px] mt-0.5"></i> Python Basics, Loops, Data Structures &amp; OOP</li>
+              <li class="flex items-start gap-2"><i class="fa-solid fa-check text-cyan-glow text-[11px] mt-0.5"></i> Modern Web (HTML5, Tailwind CSS, JavaScript)</li>
+              <li class="flex items-start gap-2"><i class="fa-solid fa-check text-cyan-glow text-[11px] mt-0.5"></i> Git, GitHub, API Integrations &amp; Deployments</li>
+              <li class="flex items-start gap-2"><i class="fa-solid fa-check text-cyan-glow text-[11px] mt-0.5"></i> 3 Live Real-World Projects for Resume</li>
+            </ul>
+          </div>
+
+          <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+            <span class="text-xs text-slate-400 font-mono">Beginners &amp; College Students</span>
+            <button onclick="openEnrollmentModalWith('Coding')" class="text-xs font-orbitron font-bold text-cyan-glow hover:underline flex items-center gap-1.5">
+              Enroll <i class="fa-solid fa-chevron-right text-[10px]"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section 4: Institute Gallery -->
+  <section id="institute-gallery" class="py-24 relative overflow-hidden bg-space-950/70 border-y border-cyan-glow/15">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="text-xs font-mono font-bold tracking-widest text-pink-glow uppercase bg-pink-glow/10 px-3 py-1 rounded-full border border-pink-glow/30">EXPLORE OUR CAMPUS</span>
+        <h2 class="text-3xl sm:text-5xl font-orbitron font-extrabold text-white mt-4">Institute <span class="text-cyan-glow">Gallery</span></h2>
+        <p class="text-slate-400 text-sm sm:text-base mt-4">Take a quick visual tour of our classrooms, practical labs, and student learning spaces.</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        <figure class="institute-image-card sm:col-span-2 lg:col-span-2 lg:row-span-2"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2wfQeIFUIJPZJ6YIg5-D856DJO0AYRTqV6UvlvGd0fg&s=10" alt="Students collaborating in the institute lab" loading="lazy"><figcaption><span>01</span> Practical Lab</figcaption></figure>
+        <figure class="institute-image-card"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjwtSnNbWFTZGvxU6kFd254wUSQuu7U4qYLL_uvSSkHg&s" alt="Modern institute classroom" loading="lazy"><figcaption><span>02</span> Smart Classroom</figcaption></figure>
+        <figure class="institute-image-card"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjwtSnNbWFTZGvxU6kFd254wUSQuu7U4qYLL_uvSSkHg&s" alt="Teacher guiding students" loading="lazy"><figcaption><span>03</span> Expert Mentors</figcaption></figure>
+        <figure class="institute-image-card"><img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=700&q=85" alt="Computer workstation in the institute" loading="lazy"><figcaption><span>04</span> Computer Zone</figcaption></figure>
+        <figure class="institute-image-card"><img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=700&q=85" alt="Students in a group session" loading="lazy"><figcaption><span>05</span> Group Learning</figcaption></figure>
+        <figure class="institute-image-card"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=700&q=85" alt="Students discussing a project" loading="lazy"><figcaption><span>06</span> Project Work</figcaption></figure>
+        <figure class="institute-image-card"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=700&q=85" alt="Technology workspace" loading="lazy"><figcaption><span>07</span> Tech Workspace</figcaption></figure>
+        <figure class="institute-image-card"><img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=700&q=85" alt="Students learning together" loading="lazy"><figcaption><span>08</span> Student Community</figcaption></figure>
+        <figure class="institute-image-card"><img src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=700&q=85" alt="Students celebrating achievement" loading="lazy"><figcaption><span>09</span> Achievements</figcaption></figure>
+        <figure class="institute-image-card"><img src="https://images.unsplash.com/photo-1560439514-4e9645039924?auto=format&fit=crop&w=700&q=85" alt="Institute study area" loading="lazy"><figcaption><span>10</span> Study Space</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Why Choose SK COMPUTECH -->
+  <section id="why-us" class="py-24 bg-space-950/80 border-t border-slate-800/80 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-mono font-bold tracking-widest text-pink-glow uppercase bg-pink-glow/10 px-3 py-1 rounded-full border border-pink-glow/30">
+          THE INSTITUTIONAL ADVANTAGE
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-orbitron font-extrabold text-white mt-4">
+          Why Train At <span class="text-cyan-glow">SK COMPUTECH</span>?
+        </h2>
+        <p class="text-slate-400 text-sm sm:text-base mt-4">
+          Equipping learners with state-of-the-art computer labs, individualized mentorship, and real workplace competencies.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <div class="glass-card p-8 rounded-2xl border-l-4 border-l-cyan-glow">
+          <div class="w-14 h-14 rounded-2xl bg-cyan-glow/10 border border-cyan-glow/30 flex items-center justify-center text-cyan-glow text-2xl mb-6 shadow-neon-cyan">
+            <i class="fa-solid fa-desktop"></i>
+          </div>
+          <h3 class="text-lg font-orbitron font-bold text-white mb-3">100% Practical Lab Training</h3>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            Every student gets an individual computer workstation with high-speed internet and all licensed software pre-configured.
+          </p>
+        </div>
+
+        <div class="glass-card p-8 rounded-2xl border-l-4 border-l-pink-glow">
+          <div class="w-14 h-14 rounded-2xl bg-pink-glow/10 border border-pink-glow/30 flex items-center justify-center text-pink-glow text-2xl mb-6 shadow-neon-pink">
+            <i class="fa-solid fa-stamp"></i>
+          </div>
+          <h3 class="text-lg font-orbitron font-bold text-white mb-3">Govt. Authorized Certificates</h3>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            Official verifiable diplomas and marksheets honored in state recruitments, banks, multinational corporations, and private firms.
+          </p>
+        </div>
+
+        <div class="glass-card p-8 rounded-2xl border-l-4 border-l-purple-glow">
+          <div class="w-14 h-14 rounded-2xl bg-purple-glow/10 border border-purple-glow/30 flex items-center justify-center text-purple-glow text-2xl mb-6">
+            <i class="fa-solid fa-briefcase"></i>
+          </div>
+          <h3 class="text-lg font-orbitron font-bold text-white mb-3">Job &amp; Exam Preparation</h3>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            Dedicated mock tests, typing speed analysis, resume guidance, and interview practice for accounting and IT executive roles.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section 5: Student Zone & Testimonials -->
+  <section id="student-zone" class="py-24 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Student Verification Quick Box -->
+      <div class="glass-card rounded-2xl p-8 mb-20 border border-cyan-glow/30 shadow-neon-cyan/20">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-7">
+            <span class="text-xs font-mono text-cyan-glow uppercase tracking-wider font-bold">DIGITAL CREDENTIAL PORTAL</span>
+            <h3 class="text-2xl sm:text-3xl font-orbitron font-bold text-white mt-1">Student Roll Number &amp; Certificate Verification</h3>
+            <p class="text-slate-300 text-sm mt-2">
+              Institutions, employers, and students can authenticate certificate validity using enrollment roll numbers.
+            </p>
+          </div>
+          <div class="lg:col-span-5">
+            <form onsubmit="handleVerification(event)" class="flex flex-col sm:flex-row gap-3">
+              <input type="text" id="verify-roll" placeholder="Enter Roll / Reg No. (e.g. SKC-2026-89)" required class="flex-1 px-4 py-3 rounded-xl bg-space-900 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-glow font-mono">
+              <button type="submit" class="px-6 py-3 rounded-xl bg-cyan-glow text-black font-orbitron font-bold text-xs tracking-wider hover:shadow-neon-cyan transition-all whitespace-nowrap">
+                VERIFY NOW
+              </button>
+            </form>
+            <div id="verify-result" class="hidden mt-3 text-xs p-2.5 rounded-lg font-mono"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonials Section -->
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="text-xs font-mono font-bold tracking-widest text-cyan-glow uppercase">STUDENT SUCCESS VOICES</span>
+        <h2 class="text-3xl sm:text-4xl font-orbitron font-bold text-white mt-2">Words From Our Alumni</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <div class="glass-card p-6 rounded-2xl">
+          <div class="flex items-center gap-1 text-pink-glow text-xs mb-4">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="text-slate-300 text-sm italic mb-6">
+            "SK Computech gave me complete confidence in Tally Prime and GST returns. Within 1 month of completing the course, I secured a junior accountant position in a renowned trade firm."
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-cyan-glow/20 border border-cyan-glow text-cyan-glow flex items-center justify-center font-bold font-orbitron">
+              RS
+            </div>
+            <div>
+              <h4 class="text-sm font-bold text-white">Rahul Sharma</h4>
+              <p class="text-xs text-slate-400 font-mono">Tally Prime + GST Alumni</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card p-6 rounded-2xl">
+          <div class="flex items-center gap-1 text-cyan-glow text-xs mb-4">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="text-slate-300 text-sm italic mb-6">
+            "Scored 96% in my RSCIT government examination! The daily computer practicals and test series conducted by the faculty made all the questions straightforward on exam day."
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-pink-glow/20 border border-pink-glow text-pink-glow flex items-center justify-center font-bold font-orbitron">
+              PV
+            </div>
+            <div>
+              <h4 class="text-sm font-bold text-white">Pooja Verma</h4>
+              <p class="text-xs text-slate-400 font-mono">RSCIT Rank Holder</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card p-6 rounded-2xl">
+          <div class="flex items-center gap-1 text-purple-glow text-xs mb-4">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="text-slate-300 text-sm italic mb-6">
+            "Completed my DCA diploma from SK Computech. The instructors are patient, doubt sessions are always cleared, and advanced Excel skills helped me crack my administrative exam."
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-purple-glow/20 border border-purple-glow text-purple-glow flex items-center justify-center font-bold font-orbitron">
+              AK
+            </div>
+            <div>
+              <h4 class="text-sm font-bold text-white">Amit Kumar</h4>
+              <p class="text-xs text-slate-400 font-mono">DCA Graduate</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section 6: Direct Enrollment Section -->
+  <section id="enroll-section" class="py-24 bg-space-950 border-t border-slate-800 relative">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-12">
+        <span class="text-xs font-mono font-bold tracking-widest text-cyan-glow uppercase bg-cyan-glow/10 px-3 py-1 rounded-full border border-cyan-glow/30">
+          OFFICIAL ADMISSION PORTAL
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-orbitron font-extrabold text-white mt-4">
+          Student Admission &amp; Course Enrollment
+        </h2>
+        <p class="text-slate-400 text-sm sm:text-base mt-3">
+          Fill out the application below. Our admissions coordinator will verify your application and confirm your batch timing.
+        </p>
+      </div>
+
+      <!-- Main Form Container -->
+      <div class="glass-card rounded-3xl p-6 sm:p-10 border border-cyan-glow/30 shadow-2xl relative">
+        <form id="main-enroll-form" onsubmit="handleEnrollmentSubmit(event, 'main-enroll-form')">
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            
+            <!-- Full Name -->
+            <div>
+              <label class="block text-xs font-mono text-cyan-glow uppercase tracking-wider mb-2" for="m-name">
+                Full Name (Student Name) *
+              </label>
+              <div class="relative">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-500"><i class="fa-solid fa-user text-xs"></i></span>
+                <input type="text" id="m-name" name="fullName" required minlength="3" placeholder="e.g. Vikramaditya Singh" class="w-full pl-9 pr-4 py-3 rounded-xl bg-space-900 border border-slate-700 text-white text-sm focus:border-cyan-glow focus:outline-none transition-colors">
+              </div>
+            </div>
+
+            <!-- Father's Name -->
+            <div>
+              <label class="block text-xs font-mono text-cyan-glow uppercase tracking-wider mb-2" for="m-fname">
+                Father's / Guardian's Name *
+              </label>
+              <div class="relative">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-500"><i class="fa-solid fa-user-shield text-xs"></i></span>
+                <input type="text" id="m-fname" name="fatherName" required minlength="3" placeholder="e.g. Rajesh Singh" class="w-full pl-9 pr-4 py-3 rounded-xl bg-space-900 border border-slate-700 text-white text-sm focus:border-cyan-glow focus:outline-none transition-colors">
+              </div>
+            </div>
+
+            <!-- Mobile Number -->
+            <div>
+              <label class="block text-xs font-mono text-cyan-glow uppercase tracking-wider mb-2" for="m-phone">
+                Mobile Number (WhatsApp) *
+              </label>
+              <div class="relative">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-500 font-mono text-xs">+91</span>
+                <input type="tel" id="m-phone" name="phone" required pattern="[0-9]{10}" placeholder="9876543210" class="w-full pl-12 pr-4 py-3 rounded-xl bg-space-900 border border-slate-700 text-white text-sm focus:border-cyan-glow focus:outline-none transition-colors">
+              </div>
+            </div>
+
+            <!-- Email Address -->
+            <div>
+              <label class="block text-xs font-mono text-cyan-glow uppercase tracking-wider mb-2" for="m-email">
+                Email Address *
+              </label>
+              <div class="relative">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-500"><i class="fa-solid fa-envelope text-xs"></i></span>
+                <input type="email" id="m-email" name="email" required placeholder="vikram@example.com" class="w-full pl-9 pr-4 py-3 rounded-xl bg-space-900 border border-slate-700 text-white text-sm focus:border-cyan-glow focus:outline-none transition-colors">
+              </div>
+            </div>
+
+            <!-- Gender -->
+            <div>
+              <label class="block text-xs font-mono text-cyan-glow uppercase tracking-wider mb-2" for="m-gender">
+                Gender *
+              </label>
+              <select id="m-gender" name="gender" required class="w-full px-4 py-3 rounded-xl bg-space-900 border border-slate-700 text-white text-sm focus:border-cyan-glow focus:outline-none transition-colors">
+                <option value="">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <!-- Date of Birth -->
+            <div>
+              <label class="block text-xs font-mono text-cyan-glow uppercase tracking-wider mb-2" for="m-dob">
+                Date of Birth *
+              </label>
+              <input type="date" id="m-dob" name="dob" required class="w-full px-4 py-3 rounded-xl bg-space-900 border border-slate-700 text-white text-sm focus:border-cyan-glow focus:outline-none transition-colors">
+            </div>
+
+            <!-- Course Selection -->
+            <div>
+              <label class="block text-xs font-mono text-cyan-glow uppercase tracking-wider mb-2" for="m-course">
+                Course Selection *
+              </label>
+              <select id="m-course" name="course" required class="w-full px-4 py-3 rounded-xl bg-space-900 border border-cyan-glow/50 text-cyan-glow text-sm font-semibold focus:border-cyan-glow focus:outline-none transition-colors">
+                <option value="RSCIT">RSCIT (Govt. Approved IT Literacy)</option>
+                <option value="Tally Prime with GST">Tally Prime with GST &amp; Accounting</option>
+                <option value="DCA">DCA (Diploma in Computer Applications)</option>
+                <option value="PGDCA">PGDCA (Post Graduate Diploma)</option>
+                <option value="Typing">Computer Typing (Hindi &amp; English Speed)</option>
+                <option value="Python & Coding">Python Programming &amp; Web Development</option>
+              </select>
+            </div>
+
+            <!-- Preferred Batch Timing -->
+            <div>
+              <label class="block text-xs font-mono text-cyan-glow uppercase tracking-wider mb-2" for="m-batch">
+                Preferred Batch Timing *
+              </label>
+              <select id="m-batch" name="batch" required class="w-full px-4 py-3 rounded-xl bg-space-900 border border-slate-700 text-white text-sm focus:border-cyan-glow focus:outline-none transition-colors">
+                <option value="Morning (8:00 AM - 11:00 AM)">Morning (8:00 AM - 11:00 AM)</option>
+                <option value="Afternoon (12:00 PM - 3:00 PM)">Afternoon (12:00 PM - 3:00 PM)</option>
+                <option value="Evening (4:00 PM - 7:00 PM)">Evening (4:00 PM - 7:00 PM)</option>
+              </select>
+            </div>
+
+            <!-- Highest Qualification -->
+            <div class="sm:col-span-2">
+              <label class="block text-xs font-mono text-cyan-glow uppercase tracking-wider mb-2" for="m-qual">
+                Highest Educational Qualification *
+              </label>
+              <select id="m-qual" name="qualification" required class="w-full px-4 py-3 rounded-xl bg-space-900 border border-slate-700 text-white text-sm focus:border-cyan-glow focus:outline-none transition-colors">
+                <option value="10th Standard">10th Standard</option>
+                <option value="12th Standard">12th Standard</option>
+                <option value="Graduate (B.A / B.Com / B.Sc / BCA)">Graduate (B.A / B.Com / B.Sc / BCA)</option>
+                <option value="Post-Graduate (M.A / M.Com / M.Sc / MCA)">Post-Graduate (M.A / M.Com / M.Sc / MCA)</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <!-- Full Address -->
+            <div class="sm:col-span-2">
+              <label class="block text-xs font-mono text-cyan-glow uppercase tracking-wider mb-2" for="m-address">
+                Full Residential Address / City *
+              </label>
+              <textarea id="m-address" name="address" rows="3" maxlength="250" required placeholder="Ward No. / Colony / Tehsil / District / PIN code" class="w-full px-4 py-3 rounded-xl bg-space-900 border border-slate-700 text-white text-sm focus:border-cyan-glow focus:outline-none transition-colors"></textarea>
+            </div>
+
+            <!-- Query / Remarks -->
+            <div class="sm:col-span-2">
+              <label class="block text-xs font-mono text-slate-400 uppercase tracking-wider mb-2" for="m-query">
+                Message / Query (Optional)
+              </label>
+              <textarea id="m-query" name="query" rows="2" placeholder="Any specific batch questions or concession inquiries..." class="w-full px-4 py-3 rounded-xl bg-space-900 border border-slate-700 text-white text-sm focus:border-cyan-glow focus:outline-none transition-colors"></textarea>
+            </div>
+
+          </div>
+
+          <!-- Submit Button -->
+          <div class="mt-8">
+            <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-cyan-glow via-cyan-400 to-pink-glow text-black font-orbitron font-extrabold text-sm uppercase tracking-wider shadow-neon-combo hover:scale-[1.01] transition-transform flex items-center justify-center gap-2">
+              <i class="fa-solid fa-file-signature"></i> SUBMIT ADMISSION APPLICATION
+            </button>
+            <p class="text-center text-xs text-slate-400 font-mono mt-3">
+              <i class="fa-solid fa-lock text-cyan-glow mr-1"></i> Data protected &amp; directly submitted to SK COMPUTECH admissions desk.
+            </p>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section 7: Contact & Institutional Map -->
+  <footer id="contact" class="bg-space-950 border-t border-cyan-glow/20 pt-16 pb-12 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        
+        <!-- Col 1: Institute Overview -->
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-9 h-9 rounded-lg bg-gradient-to-tr from-cyan-glow to-pink-glow p-[1px]">
+              <div class="w-full h-full bg-space-900 rounded-[7px] flex items-center justify-center">
+                <i class="fa-solid fa-microchip text-cyan-glow text-base"></i>
+              </div>
+            </div>
+            <span class="font-orbitron font-bold text-lg text-white">SK COMPUTECH</span>
+          </div>
+          <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4">
+            Pioneering digital empowerment, government computing certification, accounting excellence, and modern IT career skills.
+          </p>
+          <div class="flex items-center gap-3 text-slate-400">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-xl bg-space-850 border border-slate-700 hover:border-cyan-glow hover:text-cyan-glow flex items-center justify-center transition-all"><i class="fa-brands fa-facebook-f text-xs"></i></a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-xl bg-space-850 border border-slate-700 hover:border-pink-glow hover:text-pink-glow flex items-center justify-center transition-all"><i class="fa-brands fa-instagram text-xs"></i></a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-xl bg-space-850 border border-slate-700 hover:border-red-500 hover:text-red-500 flex items-center justify-center transition-all"><i class="fa-brands fa-youtube text-xs"></i></a>
+            <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-xl bg-space-850 border border-slate-700 hover:border-green-400 hover:text-green-400 flex items-center justify-center transition-all"><i class="fa-brands fa-whatsapp text-xs"></i></a>
+          </div>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div>
+          <h4 class="text-sm font-orbitron font-bold text-white mb-4 uppercase tracking-wider text-cyan-glow">Academic Links</h4>
+          <ul class="space-y-2 text-xs sm:text-sm text-slate-400">
+            <li><a href="#featured-showcase" onclick="switchFeaturedCourse('rscit')" class="hover:text-cyan-glow transition-colors">RSCIT Govt. Diploma</a></li>
+            <li><a href="#featured-showcase" onclick="switchFeaturedCourse('tally')" class="hover:text-cyan-glow transition-colors">Tally Prime + GST Course</a></li>
+            <li><a href="#featured-showcase" onclick="switchFeaturedCourse('dca')" class="hover:text-cyan-glow transition-colors">DCA &amp; PGDCA Software</a></li>
+            <li><a href="#courses" class="hover:text-cyan-glow transition-colors">Hindi &amp; English Typing Labs</a></li>
+            <li><a href="#student-zone" class="hover:text-cyan-glow transition-colors">Certificate Verification</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Contact Details -->
+        <div>
+          <h4 class="text-sm font-orbitron font-bold text-white mb-4 uppercase tracking-wider text-pink-glow">Campus Desk</h4>
+          <ul class="space-y-3 text-xs sm:text-sm text-slate-400">
+            <li class="flex items-start gap-3">
+              <i class="fa-solid fa-location-dot text-pink-glow mt-1 text-xs"></i>
+              <span>SK COMPUTECH Campus, Main Market Center, Rajasthan, India</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <i class="fa-solid fa-phone text-pink-glow text-xs"></i>
+              <span class="font-mono">+91 98290 XXXXX / +91 94140 XXXXX</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <i class="fa-solid fa-envelope text-pink-glow text-xs"></i>
+              <span class="font-mono">admissions@skcomputech.in</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <i class="fa-solid fa-clock text-pink-glow text-xs"></i>
+              <span>Mon - Sat: 7:30 AM - 7:30 PM</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Quick Action -->
+        <div>
+          <h4 class="text-sm font-orbitron font-bold text-white mb-4 uppercase tracking-wider text-cyan-glow">Admission Query</h4>
+          <p class="text-xs text-slate-400 mb-3">Need immediate guidance on which course fits your career goal?</p>
+          <button onclick="openEnrollmentModal()" class="w-full py-2.5 rounded-xl bg-space-850 border border-cyan-glow/50 text-cyan-glow hover:bg-cyan-glow hover:text-black font-orbitron text-xs font-bold transition-all shadow-neon-cyan/20">
+            INSTANT ADMISSION FORM
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Bottom Copyright & Status -->
+      <div class="pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-mono">
+        <p>&copy; 2026 SK COMPUTECH Institute. All Rights Reserved.</p>
+        <p class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Admissions Open For Current Academic Batches
+        </p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp CTA Widget -->
+  <aside aria-label="Floating Actions" class="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-3">
+    <!-- Chat Tooltip -->
+    <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full glass-card border border-green-400/40 text-green-400 text-xs font-mono shadow-lg">
+      <span class="w-2 h-2 rounded-full bg-green-400 animate-ping"></span> Chat on WhatsApp
+    </div>
+    <a href="https://wa.me/919829000000?text=Hello%20SK%20COMPUTECH,%20I%20am%20interested%20in%20course%20admissions." target="_blank" rel="noopener noreferrer" class="w-14 h-14 rounded-full bg-gradient-to-tr from-emerald-600 to-green-400 text-white flex items-center justify-center text-2xl shadow-[0_0_25px_rgba(34,197,94,0.6)] hover:scale-110 transition-transform">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+  </aside>
+
+  <!-- Dedicated Enrollment Pop-Up Modal -->
+  <div id="enrollment-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
+    <div class="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl glass-card border border-cyan-glow/50 p-6 sm:p-8 shadow-2xl">
+      
+      <!-- Close Button -->
+      <button onclick="closeEnrollmentModal()" class="absolute top-5 right-5 text-slate-400 hover:text-pink-glow text-xl focus:outline-none">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="mb-6">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-pink-glow/10 text-pink-glow border border-pink-glow/30 text-xs font-mono font-bold mb-2">
+          <i class="fa-solid fa-graduation-cap"></i> ONLINE ADMISSION
+        </div>
+        <h3 class="text-2xl font-orbitron font-extrabold text-white">Join SK COMPUTECH</h3>
+        <p class="text-xs text-slate-400">Fill in the fields to reserve your student seat in upcoming batch.</p>
+      </div>
+
+      <form id="modal-enroll-form" onsubmit="handleEnrollmentSubmit(event, 'modal-enroll-form')">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          
+          <div>
+            <label class="block text-[11px] font-mono text-cyan-glow uppercase mb-1">Student Full Name *</label>
+            <input type="text" name="fullName" required minlength="3" placeholder="Vikram Sharma" class="w-full px-3.5 py-2.5 rounded-xl bg-space-900 border border-slate-700 text-white text-xs focus:border-cyan-glow focus:outline-none">
+          </div>
+
+          <div>
+            <label class="block text-[11px] font-mono text-cyan-glow uppercase mb-1">Father's Name *</label>
+            <input type="text" name="fatherName" required minlength="3" placeholder="Rajesh Sharma" class="w-full px-3.5 py-2.5 rounded-xl bg-space-900 border border-slate-700 text-white text-xs focus:border-cyan-glow focus:outline-none">
+          </div>
+
+          <div>
+            <label class="block text-[11px] font-mono text-cyan-glow uppercase mb-1">Mobile (WhatsApp) *</label>
+            <input type="tel" name="phone" required pattern="[0-9]{10}" placeholder="10-digit number" class="w-full px-3.5 py-2.5 rounded-xl bg-space-900 border border-slate-700 text-white text-xs focus:border-cyan-glow focus:outline-none font-mono">
+          </div>
+
+          <div>
+            <label class="block text-[11px] font-mono text-cyan-glow uppercase mb-1">Email Address *</label>
+            <input type="email" name="email" required placeholder="vikram@example.com" class="w-full px-3.5 py-2.5 rounded-xl bg-space-900 border border-slate-700 text-white text-xs focus:border-cyan-glow focus:outline-none">
+          </div>
+
+          <div>
+            <label class="block text-[11px] font-mono text-cyan-glow uppercase mb-1">Gender *</label>
+            <select name="gender" required class="w-full px-3.5 py-2.5 rounded-xl bg-space-900 border border-slate-700 text-white text-xs focus:border-cyan-glow focus:outline-none">
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-[11px] font-mono text-cyan-glow uppercase mb-1">Date of Birth *</label>
+            <input type="date" name="dob" required class="w-full px-3.5 py-2.5 rounded-xl bg-space-900 border border-slate-700 text-white text-xs focus:border-cyan-glow focus:outline-none">
+          </div>
+
+          <div>
+            <label class="block text-[11px] font-mono text-cyan-glow uppercase mb-1">Course *</label>
+            <select id="modal-course-select" name="course" required class="w-full px-3.5 py-2.5 rounded-xl bg-space-900 border border-cyan-glow/50 text-cyan-glow font-semibold text-xs focus:border-cyan-glow focus:outline-none">
+              <option value="RSCIT">RSCIT (Govt. Approved)</option>
+              <option value="Tally Prime with GST">Tally Prime + GST</option>
+              <option value="DCA">DCA (6 Months)</option>
+              <option value="PGDCA">PGDCA (1 Year)</option>
+              <option value="Typing">Hindi &amp; English Typing</option>
+              <option value="Python & Coding">Python &amp; Web Coding</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-[11px] font-mono text-cyan-glow uppercase mb-1">Preferred Batch *</label>
+            <select name="batch" required class="w-full px-3.5 py-2.5 rounded-xl bg-space-900 border border-slate-700 text-white text-xs focus:border-cyan-glow focus:outline-none">
+              <option value="Morning (8 AM - 11 AM)">Morning (8 AM - 11 AM)</option>
+              <option value="Afternoon (12 PM - 3 PM)">Afternoon (12 PM - 3 PM)</option>
+              <option value="Evening (4 PM - 7 PM)">Evening (4 PM - 7 PM)</option>
+            </select>
+          </div>
+
+          <div class="sm:col-span-2">
+            <label class="block text-[11px] font-mono text-cyan-glow uppercase mb-1">Highest Qualification *</label>
+            <select name="qualification" required class="w-full px-3.5 py-2.5 rounded-xl bg-space-900 border border-slate-700 text-white text-xs focus:border-cyan-glow focus:outline-none">
+              <option value="10th">10th</option>
+              <option value="12th">12th</option>
+              <option value="Graduate">Graduate</option>
+              <option value="Post-Graduate">Post-Graduate</option>
+            </select>
+          </div>
+
+          <div class="sm:col-span-2">
+            <label class="block text-[11px] font-mono text-cyan-glow uppercase mb-1">Full Address *</label>
+            <textarea name="address" rows="2" maxlength="250" required placeholder="Your village / town / city and pincode" class="w-full px-3.5 py-2.5 rounded-xl bg-space-900 border border-slate-700 text-white text-xs focus:border-cyan-glow focus:outline-none"></textarea>
+          </div>
+
+          <div class="sm:col-span-2">
+            <label class="block text-[11px] font-mono text-slate-400 uppercase mb-1">Query / Message (Optional)</label>
+            <textarea name="query" rows="2" placeholder="Any inquiry or special batch request" class="w-full px-3.5 py-2.5 rounded-xl bg-space-900 border border-slate-700 text-white text-xs focus:border-cyan-glow focus:outline-none"></textarea>
+          </div>
+
+        </div>
+
+        <button type="submit" class="w-full mt-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-glow to-pink-glow text-black font-orbitron font-extrabold text-xs uppercase tracking-wider shadow-neon-combo hover:scale-[1.01] transition-transform">
+          CONFIRM &amp; SUBMIT ENROLLMENT
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Success Feedback Custom Modal -->
+  <div id="feedback-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
+    <div class="relative w-full max-w-md rounded-2xl glass-card border border-cyan-glow p-8 text-center shadow-neon-combo">
+      <div class="w-16 h-16 mx-auto rounded-full bg-cyan-glow/20 border-2 border-cyan-glow text-cyan-glow flex items-center justify-center text-3xl mb-4 shadow-neon-cyan">
+        <i class="fa-solid fa-circle-check"></i>
+      </div>
+      <h3 class="text-xl font-orbitron font-extrabold text-white mb-2" id="feedback-title">Application Submitted!</h3>
+      <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6" id="feedback-message">
+        Thank you! Your registration has been received. Our team will contact you shortly to confirm your batch timings.
+      </p>
+      <button onclick="closeFeedbackModal()" class="w-full py-3 rounded-xl bg-cyan-glow text-black font-orbitron font-bold text-xs tracking-wider shadow-neon-cyan">
+        CONTINUE EXPLORING
+      </button>
+    </div>
+  </div>
+
+  <script>
+    /* Course Data for Interactive Showcase & Dual-Orbit System */
+    const coursesData = {
+      rscit: {
+        tag: '<i class="fa-solid fa-award"></i> RAJASTHAN GOVT. APPROVED IT LITERACY',
+        title: 'RSCIT DIPLOMA <br><span class="text-cyan-glow drop-shadow-[0_0_15px_rgba(0,240,255,0.7)]">CERTIFICATION</span>',
+        desc: 'Essential 3-month IT qualification recognized across Rajasthan government exams and professional corporate environments. Covers full MS Office, Internet operations, Cyber Security basics, and e-Mitra digital governance portals.',
+        duration: '3 Months (Daily Lab)',
+        eligibility: '10th Standard Pass',
+        centerLabel: 'RSCIT HUB',
+        courseKey: 'RSCIT',
+        outerIcons: [
+          '<i class="fa-solid fa-file-word text-lg sm:text-xl"></i>',
+          '<i class="fa-solid fa-file-excel text-lg sm:text-xl"></i>',
+          '<i class="fa-solid fa-shield-halved text-lg sm:text-xl"></i>',
+          '<i class="fa-solid fa-network-wired text-lg sm:text-xl"></i>'
+        ],
+        innerIcons: [
+          '<i class="fa-solid fa-file-powerpoint text-base sm:text-lg"></i>',
+          '<i class="fa-solid fa-fingerprint text-base sm:text-lg"></i>'
+        ]
+      },
+      tally: {
+        tag: '<i class="fa-solid fa-calculator"></i> PROFESSIONAL CORPORATE ACCOUNTING',
+        title: 'TALLY PRIME <br><span class="text-pink-glow drop-shadow-[0_0_15px_rgba(255,0,127,0.7)]">WITH GST &amp; E-WAY</span>',
+        desc: 'Master professional double-entry accounting, real-time GST invoicing, debit/credit vouchers, stock valuation, TDS calculations, payroll ledger management, and Balance Sheet finalization.',
+        duration: '2 - 3 Months',
+        eligibility: '10th / 12th / Commerce',
+        centerLabel: 'TALLY GST',
+        courseKey: 'Tally Prime with GST',
+        outerIcons: [
+          '<i class="fa-solid fa-calculator text-lg sm:text-xl"></i>',
+          '<i class="fa-solid fa-receipt text-lg sm:text-xl"></i>',
+          '<i class="fa-solid fa-chart-line text-lg sm:text-xl"></i>',
+          '<i class="fa-solid fa-scale-balanced text-lg sm:text-xl"></i>'
+        ],
+        innerIcons: [
+          '<i class="fa-solid fa-coins text-base sm:text-lg"></i>',
+          '<i class="fa-solid fa-file-invoice-dollar text-base sm:text-lg"></i>'
+        ]
+      },
+      dca: {
+        tag: '<i class="fa-solid fa-laptop-code"></i> ADVANCED DIPLOMA &amp; DEVELOPMENT',
+        title: 'DCA / PGDCA <br><span class="text-purple-glow drop-shadow-[0_0_15px_rgba(157,78,221,0.7)]">COMPUTING SUITE</span>',
+        desc: 'From in-depth Office automation to C++, Python algorithms, SQL relational databases, and desktop publishing basics. Ideal for aspirants aiming for administrative and IT support posts.',
+        duration: '6 Months / 1 Year',
+        eligibility: '10th / 12th / Graduation',
+        centerLabel: 'DEV SUITE',
+        courseKey: 'DCA',
+        outerIcons: [
+          '<i class="fa-brands fa-python text-lg sm:text-xl"></i>',
+          '<i class="fa-solid fa-database text-lg sm:text-xl"></i>',
+          '<i class="fa-brands fa-html5 text-lg sm:text-xl"></i>',
+          '<i class="fa-solid fa-terminal text-lg sm:text-xl"></i>'
+        ],
+        innerIcons: [
+          '<i class="fa-solid fa-code text-base sm:text-lg"></i>',
+          '<i class="fa-solid fa-microchip text-base sm:text-lg"></i>'
+        ]
+      }
+    };
+
+    let currentSelectedCourseKey = 'RSCIT';
+
+    /* Switch Course Showcase Tab & update dual-orbit tools */
+    function switchFeaturedCourse(key) {
+      const data = coursesData[key];
+      if (!data) return;
+
+      currentSelectedCourseKey = data.courseKey;
+
+      // Update Tab Styles
+      ['rscit', 'tally', 'dca'].forEach(tab => {
+        const btn = document.getElementById(`btn-tab-${tab}`);
+        if (tab === key) {
+          btn.className = 'course-tab-btn active px-5 py-2.5 rounded-full font-orbitron text-xs font-bold transition-all border border-cyan-glow bg-cyan-glow/20 text-cyan-glow shadow-neon-cyan';
+        } else {
+          btn.className = 'course-tab-btn px-5 py-2.5 rounded-full font-orbitron text-xs font-bold transition-all border border-slate-700 bg-space-800 text-slate-400 hover:border-cyan-glow/60 hover:text-cyan-glow';
+        }
+      });
+
+      // Update Text Content
+      document.getElementById('featured-tag').innerHTML = data.tag;
+      document.getElementById('featured-title').innerHTML = data.title;
+      document.getElementById('featured-desc').innerText = data.desc;
+      document.getElementById('orbit-center-label').innerText = data.centerLabel;
+
+      // Update Highlights
+      document.getElementById('featured-highlights').innerHTML = `
+        <div class="p-3 rounded-xl bg-space-800/80 border border-slate-700/60 flex items-center gap-3">
+          <i class="fa-solid fa-clock text-cyan-glow text-lg"></i>
+          <div>
+            <p class="text-[11px] text-slate-400 font-mono">DURATION</p>
+            <p class="text-sm font-semibold text-slate-200">${data.duration}</p>
+          </div>
+        </div>
+        <div class="p-3 rounded-xl bg-space-800/80 border border-slate-700/60 flex items-center gap-3">
+          <i class="fa-solid fa-user-graduate text-pink-glow text-lg"></i>
+          <div>
+            <p class="text-[11px] text-slate-400 font-mono">ELIGIBILITY</p>
+            <p class="text-sm font-semibold text-slate-200">${data.eligibility}</p>
+          </div>
+        </div>
+      `;
+
+      // Update Orbit Icons
+      for (let i = 0; i < 4; i++) {
+        const node = document.getElementById(`outer-node-${i + 1}`);
+        if (node && data.outerIcons[i]) {
+          node.innerHTML = data.outerIcons[i];
+        }
+      }
+
+      for (let j = 0; j < 2; j++) {
+        const innerNode = document.getElementById(`inner-node-${j + 1}`);
+        if (innerNode && data.innerIcons[j]) {
+          innerNode.innerHTML = data.innerIcons[j];
+        }
+      }
+    }
+
+    /* Modal Controllers */
+    function openEnrollmentModal() {
+      const modal = document.getElementById('enrollment-modal');
+      modal.classList.remove('hidden');
+      setTimeout(() => modal.classList.remove('opacity-0'), 10);
+    }
+
+    function openEnrollmentModalWith(courseName) {
+      const select = document.getElementById('modal-course-select');
+      if (select) {
+        select.value = courseName;
+      }
+      openEnrollmentModal();
+    }
+
+    function openEnrollmentWithCourse() {
+      openEnrollmentModalWith(currentSelectedCourseKey);
+    }
+
+    function closeEnrollmentModal() {
+      const modal = document.getElementById('enrollment-modal');
+      modal.classList.add('opacity-0');
+      setTimeout(() => modal.classList.add('hidden'), 300);
+    }
+
+    function downloadSyllabusModal() {
+      showFeedback('Syllabus Download', `Course curriculum outline for ${currentSelectedCourseKey} has been initiated for download.`);
+    }
+
+    function showFeedback(title, msg) {
+      document.getElementById('feedback-title').innerText = title;
+      document.getElementById('feedback-message').innerText = msg;
+      const modal = document.getElementById('feedback-modal');
+      modal.classList.remove('hidden');
+      setTimeout(() => modal.classList.remove('opacity-0'), 10);
+    }
+
+    function closeFeedbackModal() {
+      const modal = document.getElementById('feedback-modal');
+      modal.classList.add('opacity-0');
+      setTimeout(() => modal.classList.add('hidden'), 300);
+    }
+
+    /* Handle Enrollment Form Submissions */
+    function handleEnrollmentSubmit(e, formId) {
+      e.preventDefault();
+      const form = document.getElementById(formId);
+      const formData = new FormData(form);
+      const studentName = formData.get('fullName') || 'Student';
+      const selectedCourse = formData.get('course') || 'Selected Course';
+
+      try {
+        const existingApplications = JSON.parse(localStorage.getItem('skAdmissions')) || [];
+        const application = Object.fromEntries(formData.entries());
+
+        application.id = Date.now();
+        application.createdAt = new Date().toISOString();
+
+        existingApplications.push(application);
+        localStorage.setItem('skAdmissions', JSON.stringify(existingApplications));
+      } catch (error) {
+        console.error('Failed to save enrollment application:', error);
+      }
+
+      // Reset form
+      form.reset();
+
+      // If modal was open, close it
+      if (formId === 'modal-enroll-form') {
+        closeEnrollmentModal();
+      }
+
+      // Show customized confirmation modal matching spec
+      showFeedback(
+        'Admission Registered!',
+        `Thank you ${studentName}! Your application for "${selectedCourse}" has been successfully recorded. Our SK COMPUTECH academic counselor will call you within 24 hours with your batch timing.`
+      );
+    }
+
+    /* Verification Handler */
+    function handleVerification(e) {
+      e.preventDefault();
+      const input = document.getElementById('verify-roll');
+      const resBox = document.getElementById('verify-result');
+      const val = input.value.trim();
+
+      resBox.classList.remove('hidden', 'bg-emerald-950/60', 'text-emerald-400', 'border-emerald-500/50', 'bg-rose-950/60', 'text-rose-400', 'border-rose-500/50');
+
+      if (val.length >= 4) {
+        resBox.classList.add('bg-emerald-950/60', 'text-emerald-300', 'border', 'border-emerald-500/50');
+        resBox.innerHTML = `<i class="fa-solid fa-check-circle mr-1"></i> <strong>Verified Record:</strong> Student ID "${val}" authenticated under SK COMPUTECH Academic Registry. Status: Certified.`;
+      } else {
+        resBox.classList.add('bg-rose-950/60', 'text-rose-300', 'border', 'border-rose-500/50');
+        resBox.innerHTML = `<i class="fa-solid fa-triangle-exclamation mr-1"></i> Record not found. Please verify roll format with institute office.`;
+      }
+    }
+
+    /* Mobile Hamburger Menu Toggle */
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    function toggleMobileMenu() {
+      mobileMenu.classList.toggle('hidden');
+    }
+
+    if (mobileBtn) {
+      mobileBtn.addEventListener('click', toggleMobileMenu);
+    }
+
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    /* Ambient Space Dust Particle Canvas */
+    const canvas = document.getElementById('ambient-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    const particleCount = 45;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    function createParticles() {
+      particles = [];
+      for (let i = 0; i < particleCount; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          radius: Math.random() * 1.5 + 0.5,
+          color: Math.random() > 0.5 ? '#00f0ff' : '#ff007f',
+          alpha: Math.random() * 0.7 + 0.1,
+          speedX: (Math.random() - 0.5) * 0.3,
+          speedY: (Math.random() - 0.5) * 0.3
+        });
+      }
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      particles.forEach(p => {
+        p.x += p.speedX;
+        p.y += p.speedY;
+
+        if (p.x < 0) p.x = canvas.width;
+        if (p.x > canvas.width) p.x = 0;
+        if (p.y < 0) p.y = canvas.height;
+        if (p.y > canvas.height) p.y = 0;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = p.alpha;
+        ctx.shadowBlur = 8;
+        ctx.shadowColor = p.color;
+        ctx.fill();
+      });
+
+      ctx.globalAlpha = 1.0;
+      requestAnimationFrame(animateParticles);
+    }
+
+    window.addEventListener('resize', () => {
+      resizeCanvas();
+      createParticles();
+    });
+
+    // Start Canvas & Initial Tab State on Load
+    window.addEventListener('load', () => {
+      resizeCanvas();
+      createParticles();
+      animateParticles();
+    });
+  </script>
+</body>
+</html>
